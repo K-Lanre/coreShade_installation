@@ -1,0 +1,264 @@
+[
+  {
+    "id": 1,
+    "title": "Commercial Roller Blinds",
+    "image": "/RollerBlind.jfif",
+    "category": "Blinds",
+    "overview": "A dependable roller blind system for offices, hospitality spaces, healthcare settings, schools, and residential developments that need practical glare control with a clean architectural finish.",
+    "applications": [
+      "Corporate Offices",
+      "Hotels",
+      "Healthcare Facilities",
+      "Educational Institutions",
+      "Residential Developments"
+    ],
+    "materials": [
+      "High-Performance Sunscreen Fabric",
+      "Heavy-Duty Aluminium Headrail",
+      "Precision Chain Control System",
+      "UV Resistant Fabric",
+      "Custom Powder-Coated Bottom Rail"
+    ],
+    "deliveryEstimate": "Estimated delivery: 10 to 15 working days"
+  },
+  {
+    "id": 2,
+    "title": "Commercial Blackout Blinds",
+    "image": "/BlackoutBlind.jfif",
+    "category": "Blinds",
+    "overview": "A full light-control blind option for rooms that require privacy, darkening performance, and reliable everyday operation for presentations, guest comfort, or clinical use.",
+    "applications": [
+      "Hotels",
+      "Conference Rooms",
+      "Hospitals",
+      "Cinemas",
+      "Training Facilities"
+    ],
+    "materials": [
+      "Triple-Weave Blackout Fabric",
+      "Side Channel Light Seal",
+      "Aluminium Cassette System",
+      "Flame Retardant Material",
+      "Smooth Manual or Motorised Operation"
+    ],
+    "deliveryEstimate": "Estimated delivery: 12 to 18 working days"
+  },
+  {
+    "id": 3,
+    "title": "Commercial Vertical Blinds",
+    "image": "/VerticalBlind.jfif",
+    "category": "Blinds",
+    "overview": "A practical vertical blind solution for larger glazed openings where flexible daylight adjustment, clean presentation, and easy maintenance are key.",
+    "applications": [
+      "Office Buildings",
+      "Healthcare Facilities",
+      "Government Buildings",
+      "Schools",
+      "Large Commercial Spaces"
+    ],
+    "materials": [
+      "Rotatable Vertical Louvres",
+      "Heavy-Duty Aluminium Track",
+      "Anti-Static Fabric",
+      "Easy Maintenance System",
+      "Precision Wand Control"
+    ],
+    "deliveryEstimate": "Estimated delivery: 10 to 14 working days"
+  },
+  {
+    "id": 4,
+    "title": "Commercial Venetian Blinds",
+    "image": "/VenetianBlind.jfif",
+    "category": "Blinds",
+    "overview": "A refined Venetian blind system for interiors that need exact light control, strong durability, and a sharper commercial finish.",
+    "applications": [
+      "Executive Offices",
+      "Boardrooms",
+      "Financial Institutions",
+      "Residential Apartments"
+    ],
+    "materials": [
+      "Premium Aluminium Slats",
+      "Precision Tilt Mechanism",
+      "Colour-Matched Headrail",
+      "Corrosion Resistant Finish",
+      "Child Safety Compliant Controls"
+    ],
+    "deliveryEstimate": "Estimated delivery: 10 to 15 working days"
+  },
+  {
+    "id": 5,
+    "title": "Motorised Blind Systems",
+    "image": "/MotorisedBlind.jfif",
+    "category": "Blinds",
+    "overview": "An automated blind system for projects that want remote control, scheduled operation, and a cleaner day-to-day user experience across premium spaces.",
+    "applications": [
+      "Smart Offices",
+      "Luxury Homes",
+      "Hotels",
+      "Corporate Headquarters",
+      "Healthcare Facilities"
+    ],
+    "materials": [
+      "Somfy Motor System",
+      "Smart Home Integration",
+      "Remote & Mobile App Control",
+      "Programmable Scheduling",
+      "Quiet Operation Technology"
+    ],
+    "deliveryEstimate": "Estimated delivery: 15 to 21 working days"
+  },
+  {
+    "id": 6,
+    "title": "Day & Night Blind Systems",
+    "image": "/DayandnightBlind.jfif",
+    "category": "Blinds",
+    "overview": "A layered shading option that balances privacy and daylight, making it a strong fit for residential and executive interiors that need softer light management.",
+    "applications": [
+      "Luxury Homes",
+      "Apartments",
+      "Executive Offices",
+      "Hospitality Suites"
+    ],
+    "materials": [
+      "Dual Layer Fabric System",
+      "UV Resistant Material",
+      "Smooth Chain Mechanism",
+      "Premium Cassette Headrail",
+      "Contemporary Fabric Collection"
+    ],
+    "deliveryEstimate": "Estimated delivery: 12 to 16 working days"
+  },
+  {
+    "id": 7,
+    "title": "Skylight Blind Systems",
+    "image": "/SkylightsBlind.jfif",
+    "category": "Blinds",
+    "overview": "A specialist blind system for overhead glazing where heat gain and glare need to be reduced without sacrificing the openness of the space.",
+    "applications": [
+      "Commercial Atriums",
+      "Hotels",
+      "Luxury Homes",
+      "Shopping Centres",
+      "Educational Buildings"
+    ],
+    "materials": [
+      "Tensioned Blind System",
+      "Heat Reflective Fabric",
+      "Motorised Operation",
+      "Slim Aluminium Guides",
+      "Remote Control Integration"
+    ],
+    "deliveryEstimate": "Estimated delivery: 18 to 25 working days"
+  },
+  {
+    "id": 8,
+    "title": "Privacy Blind Solutions",
+    "image": "/PrivacyBlind.jfif",
+    "category": "Blinds",
+    "overview": "A light-filtering privacy system for spaces that need visual separation while still maintaining brightness and a welcoming interior atmosphere.",
+    "applications": [
+      "Hospitals",
+      "Clinics",
+      "Offices",
+      "Government Buildings",
+      "Meeting Rooms"
+    ],
+    "materials": [
+      "Privacy Screen Fabric",
+      "Light Filtering Technology",
+      "Durable Aluminium Hardware",
+      "Easy Maintenance Finish",
+      "Commercial Grade Components"
+    ],
+    "deliveryEstimate": "Estimated delivery: 10 to 14 working days"
+  },
+  {
+    "id": 9,
+    "title": "Healthcare Blind Systems",
+    "image": "/HeathcareBlind.jfif",
+    "category": "Blinds",
+    "overview": "A healthcare-focused blind system specified for spaces that need hygiene-conscious materials, durability, and easy cleaning without compromising comfort.",
+    "applications": [
+      "Hospitals",
+      "Medical Centres",
+      "Laboratories",
+      "Care Homes",
+      "Clinics"
+    ],
+    "materials": [
+      "Antimicrobial Fabric",
+      "Flame Retardant Material",
+      "Sealed Cassette System",
+      "Moisture Resistant Finish",
+      "Easy Clean Surfaces"
+    ],
+    "deliveryEstimate": "Estimated delivery: 12 to 18 working days"
+  },
+  {
+    "id": 10,
+    "title": "Education Blind Systems",
+    "image": "/SchoolBlinds.jfif",
+    "category": "Blinds",
+    "overview": "A durable classroom-ready shading system designed to reduce glare on learning surfaces and hold up well in high-use educational environments.",
+    "applications": [
+      "Schools",
+      "Universities",
+      "Lecture Theatres",
+      "Libraries",
+      "Training Centres"
+    ],
+    "materials": [
+      "Heavy Duty Fabric",
+      "Child Safe Operation",
+      "Glare Reduction Technology",
+      "Commercial Aluminium Hardware",
+      "Easy Maintenance Design"
+    ],
+    "deliveryEstimate": "Estimated delivery: 12 to 17 working days"
+  },
+  {
+    "id": 11,
+    "title": "Custom Window Shading Solutions",
+    "image": "/Bespoke.png",
+    "category": "Blinds",
+    "overview": "A bespoke shading offer for unusual glazing, architectural details, and commercial developments that require engineered solutions beyond standard blind formats.",
+    "applications": [
+      "Architectural Projects",
+      "Commercial Developments",
+      "Luxury Residences",
+      "Hospitality",
+      "Public Buildings"
+    ],
+    "materials": [
+      "Custom Engineered Systems",
+      "Specialist Fabric Selection",
+      "Precision Aluminium Components",
+      "Smart Automation Options",
+      "Project-Specific Installation"
+    ],
+    "deliveryEstimate": "Estimated delivery: 20 to 30 working days"
+  },
+  {
+    "id": 12,
+    "title": "Cassette Blind Systems",
+    "image": "/CasseteBlind.jfif",
+    "category": "Blinds",
+    "overview": "A streamlined blind system with concealed operating components for interiors that want a cleaner visual finish and extra protection around the roller assembly.",
+    "applications": [
+      "Modern Offices",
+      "Luxury Apartments",
+      "Hotels",
+      "Retail Spaces",
+      "Residential Homes"
+    ],
+    "materials": [
+      "Slimline Aluminium Cassette",
+      "Concealed Roller Mechanism",
+      "Premium Sunscreen or Blackout Fabric",
+      "Precision Side Guides",
+      "Manual or Motorised Operation"
+    ],
+    "deliveryEstimate": "Estimated delivery: 12 to 18 working days"
+  }
+]

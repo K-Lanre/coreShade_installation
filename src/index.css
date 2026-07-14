@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-petal dark:bg-brand text-brand dark:text-petal transition-colors duration-300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #EFCEDB;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #3A1C14;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a5b5;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #7A3E30;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4F281F;
+}
+
+/* React Responsive Modal Theme Overrides */
+.react-responsive-modal-modal {
+  background: #EFCEDB !important;
+  border: 1px solid #d4a8bc;
+  color: #4F281F;
+  border-radius: 0.75rem;
+}
+.dark .react-responsive-modal-modal {
+  background: #3A1C14 !important;
+  border: 1px solid #7A3E30;
+  color: #EFCEDB;
+}
+.react-responsive-modal-closeButton svg path {
+  fill: #4F281F;
+}
+
