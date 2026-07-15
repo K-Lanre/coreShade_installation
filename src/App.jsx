@@ -1,7 +1,10 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import SEO from './components/SEO';
+import LoadingScreen from './components/LoadingScreen';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -30,8 +33,21 @@ function AppShell() {
 }
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   return (
     <Router>
+      <AnimatePresence mode="wait">
+        {isLoading && <LoadingScreen />}
+      </AnimatePresence>
       <AppShell />
     </Router>
   );
