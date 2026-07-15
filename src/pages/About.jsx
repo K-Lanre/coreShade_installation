@@ -64,17 +64,17 @@ export default function About() {
             alt="Commercial workspace drafting"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-petal/70 transition-colors duration-300 dark:bg-brand-muted/80" />
+          <div className="absolute inset-0 bg-brand/65 transition-colors duration-300 dark:bg-brand/85" />
         </div>
         <div className="relative z-10 px-6 max-w-4xl mx-auto text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-7xl font-serif text-brand dark:text-petal tracking-widest uppercase mb-6 transition-colors duration-300"
+            className="text-4xl md:text-5xl lg:text-7xl font-serif text-petal dark:text-petal tracking-widest uppercase mb-6 transition-colors duration-300"
           >
             Creating Interiors <br />
-            <span className="text-brand/65 dark:text-petal/60 font-light transition-colors duration-300">
+            <span className="text-petal/60 dark:text-cocoa-soft font-light transition-colors duration-300">
               That Perform
             </span>
           </motion.h1>
@@ -98,9 +98,9 @@ export default function About() {
                   Coreshade Installation Interior Fit-Out
                 </strong>
                 , we believe every interior should be designed with purpose. A
-                well-finished space is more than attractiveÃ¢â‚¬â€it should
-                inspire productivity, improve comfort, provide privacy, and
-                support the people who use it every day.
+                well-finished space is more than attractive, it should inspire
+                productivity, improve comfort, provide privacy, and support the
+                people who use it every day.
               </p>
               <p>
                 We work alongside developers, contractors, architects, and

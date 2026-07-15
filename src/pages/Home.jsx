@@ -98,7 +98,7 @@ export default function Home() {
               className="text-4xl md:text-5xl lg:text-6xl font-serif tracking-tight text-brand dark:text-petal mb-6 leading-tight"
             >
               Building Better <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-petal font-bold">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-light to-cocoa dark:from-petal dark:to-cocoa-soft font-bold">
                 Interior Spaces
               </span>
             </motion.h1>
@@ -408,22 +408,22 @@ export default function Home() {
               <Link
                 to="/services"
                 key={index}
-                className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-petal/60 dark:bg-brand-muted border border-brand/10 dark:border-petal/10 p-6 min-h-[300px] hover:shadow-xl hover:shadow-brand/20 hover:-translate-y-1 transition-all duration-300"
+                className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-petal/70 border border-brand/12 p-6 min-h-[300px] hover:shadow-xl hover:shadow-brand/20 hover:-translate-y-1 transition-all duration-300 dark:bg-[#2f140f] dark:border-[#6a392f]"
               >
                 <div>
-                  <div className="w-12 h-12 bg-brand/5 text-brand flex items-center justify-center rounded-lg mb-6 border border-brand/10">
-                    <span className="font-serif font-bold text-lg">
+                  <div className="w-12 h-12 bg-brand/8 text-brand flex items-center justify-center rounded-lg mb-6 border border-brand/12 dark:bg-[#4a241b] dark:border-[#8b4a3a] dark:text-[#fff3eb]">
+                    <span className="font-serif font-bold text-lg tracking-wide">
                       0{index + 1}
                     </span>
                   </div>
-                  <h4 className="text-lg font-serif text-brand dark:text-petal group-hover:text-brand-light dark:group-hover:text-petal transition-colors mb-3">
+                  <h4 className="text-lg font-serif text-brand dark:text-[#fff4ee] transition-colors mb-3">
                     {service.title}
                   </h4>
-                  <p className="text-xs text-brand/55 dark:text-cocoa leading-relaxed font-light">
+                  <p className="text-xs text-brand/60 dark:text-[#f2d6c9] leading-relaxed font-light">
                     {service.desc}
                   </p>
                 </div>
-                <div className="flex items-center space-x-1 mt-6 text-brand dark:text-cocoa-soft group-hover:translate-x-2 transition-transform duration-300 text-xs font-bold tracking-widest uppercase">
+                <div className="flex items-center space-x-1 mt-6 text-brand dark:text-[#fff0e8] group-hover:translate-x-2 transition-transform duration-300 text-xs font-bold tracking-widest uppercase">
                   <span>Learn More</span>
                   <ArrowRight size={12} />
                 </div>
@@ -530,7 +530,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-brand/55 transition-colors duration-300 dark:bg-brand/78"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 flex flex-col items-center">
-          <h2 className="text-xs font-bold tracking-widest uppercase mb-4 text-brand dark:text-cocoa-soft">
+          <h2 className="text-xs font-bold tracking-widest uppercase mb-4 text-petal/80">
             Get In Touch
           </h2>
           <h3 className="text-3xl md:text-5xl font-serif tracking-wide text-petal mb-6">
@@ -561,4 +561,3 @@ export default function Home() {
     </div>
   );
 }
-

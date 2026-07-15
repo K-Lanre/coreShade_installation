@@ -51,17 +51,17 @@ export default function Process() {
             alt="Execution Process"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-petal/60 transition-colors duration-300 dark:bg-brand-muted/80" />
+          <div className="absolute inset-0 bg-brand/65 transition-colors duration-300 dark:bg-brand/85" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-7xl font-serif text-brand dark:text-petal tracking-widest uppercase mb-6 transition-colors duration-300"
+            className="text-4xl md:text-5xl lg:text-7xl font-serif text-petal tracking-widest uppercase mb-6 transition-colors duration-300"
           >
             From Specification <br />
-            <span className="text-brand/65 dark:text-petal/60 font-light transition-colors duration-300">
+            <span className="text-petal/60 dark:text-cocoa-soft font-light transition-colors duration-300">
               To Completion
             </span>
           </motion.h1>
@@ -69,7 +69,7 @@ export default function Process() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mx-auto max-w-2xl text-lg font-light leading-relaxed text-brand/75 dark:text-petal/80 transition-colors duration-300"
+            className="mx-auto max-w-2xl text-lg font-light leading-relaxed text-petal/80 dark:text-cocoa-soft transition-colors duration-300"
           >
             A dependable interior execution roadmap. Discover our structured
             six-step methodology that guarantees absolute precision and

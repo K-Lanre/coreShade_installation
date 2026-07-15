@@ -12,6 +12,14 @@ const navLinks = [
   { name: "Contact", path: "/contact" },
 ];
 
+const heroNavPaths = new Set([
+  "/about",
+  "/services",
+  "/portfolio",
+  "/process",
+  "/contact",
+]);
+
 const getSystemTheme = () =>
   window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
@@ -72,6 +80,28 @@ export default function Navbar() {
     setHasUserTheme(true);
   };
 
+  const useHeroNavColors = heroNavPaths.has(location.pathname) && !scrolled;
+  const desktopIdleLinkClass = useHeroNavColors
+    ? "text-petal/90"
+    : scrolled
+      ? "text-brand/70 dark:text-cocoa-soft"
+      : "text-brand/90 dark:text-cocoa-soft";
+  const desktopActiveLinkClass = useHeroNavColors
+    ? "text-petal"
+    : "text-brand dark:text-petal";
+  const desktopHoverClass = useHeroNavColors
+    ? "hover:text-petal"
+    : "hover:text-brand dark:hover:text-cocoa-soft";
+  const themeButtonClass = useHeroNavColors
+    ? "border-petal/35 text-petal hover:border-petal hover:text-petal"
+    : "border-gray-300 text-gray-700 hover:border-brand hover:text-brand dark:border-gray-800 dark:text-gray-300 dark:hover:border-brand dark:hover:text-brand";
+  const mobileMenuButtonClass = useHeroNavColors
+    ? "text-petal"
+    : "text-brand dark:text-petal";
+  const activeUnderlineClass = useHeroNavColors
+    ? "bg-petal"
+    : "bg-brand dark:bg-petal";
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -81,7 +111,7 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between gap-6">
-        <Link to="/" className="flex items-center gap-3 min-w-0">
+        <Link to="/" className="flex items-center gap-3">
           <img
             src="/logo.png"
             alt="Coreshade Installation logo"
@@ -96,12 +126,8 @@ export default function Navbar() {
               to={link.path}
               end={link.end}
               className={({ isActive }) =>
-                `relative inline-flex pb-2 text-xs font-semibold tracking-widest uppercase transition-colors duration-300 hover:text-brand dark:hover:text-cocoa-soft ${
-                  isActive
-                    ? "text-brand dark:text-petal"
-                    : scrolled
-                      ? "text-brand/70 dark:text-cocoa-soft"
-                      : "text-brand/90 dark:text-cocoa-soft"
+                `relative inline-flex pb-2 text-xs font-semibold tracking-widest uppercase transition-colors duration-300 ${desktopHoverClass} ${
+                  isActive ? desktopActiveLinkClass : desktopIdleLinkClass
                 }`
               }
             >
@@ -116,7 +142,7 @@ export default function Navbar() {
                         exit={{ scaleX: 0, opacity: 0 }}
                         transition={{ duration: 0.24, ease: "easeInOut" }}
                         style={{ originX: 0.5 }}
-                        className="absolute inset-x-0 -bottom-0.5 h-[2px] rounded-full bg-brand dark:bg-petal"
+                        className={`absolute inset-x-0 -bottom-0.5 h-[2px] rounded-full ${activeUnderlineClass}`}
                       />
                     )}
                   </AnimatePresence>
@@ -127,7 +153,7 @@ export default function Navbar() {
 
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full border border-gray-300 dark:border-gray-800 hover:border-brand dark:hover:border-brand text-gray-700 dark:text-gray-300 hover:text-brand dark:hover:text-brand transition-colors duration-300 cursor-pointer"
+            className={`p-2 rounded-full border transition-colors duration-300 cursor-pointer ${themeButtonClass}`}
             aria-label="Toggle Theme"
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -137,7 +163,7 @@ export default function Navbar() {
         <div className="flex items-center space-x-4 lg:hidden">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-full border border-gray-300 dark:border-gray-800 hover:border-brand dark:hover:border-brand text-gray-700 dark:text-gray-300 hover:text-brand dark:hover:text-brand transition-colors duration-300 cursor-pointer"
+            className={`p-2 rounded-full border transition-colors duration-300 cursor-pointer ${themeButtonClass}`}
             aria-label="Toggle Theme"
           >
             {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
@@ -145,7 +171,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-brand dark:text-petal p-2 cursor-pointer focus:outline-none"
+            className={`p-2 cursor-pointer focus:outline-none transition-colors duration-300 ${mobileMenuButtonClass}`}
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -201,4 +227,3 @@ export default function Navbar() {
     </header>
   );
 }
-

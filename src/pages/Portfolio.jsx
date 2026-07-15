@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Modal } from 'react-responsive-modal';
@@ -21,6 +21,7 @@ export default function Portfolio() {
   const [filter, setFilter] = useState('Blinds');
   const [visibleCount, setVisibleCount] = useState(6);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const modalContentRef = useRef(null);
 
   const filteredProducts = useMemo(() => {
     if (filter !== 'Blinds') {
@@ -35,16 +36,33 @@ export default function Portfolio() {
 
   const loadMore = () => setVisibleCount((prev) => prev + 6);
 
+  useEffect(() => {
+    if (selectedProduct && modalContentRef.current) {
+      modalContentRef.current.scrollTop = 0;
+    }
+  }, [selectedProduct]);
+
   return (
-    <div className="pt-24 min-h-screen bg-petal dark:bg-brand text-brand dark:text-petal transition-colors duration-300">
-      <section className="relative py-24 px-6 text-center bg-[#f4dce5] dark:bg-[#321812]">
-        <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-brand dark:text-petal tracking-widest uppercase mb-6">
-          Product<br /><span className="text-brand/50 dark:text-cocoa font-light">Portfolio</span>
-        </h1>
-        <div className="h-0.5 w-32 bg-brand dark:bg-petal mx-auto mb-6"></div>
-        <p className="text-brand/65 dark:text-cocoa-soft max-w-3xl mx-auto text-base font-light leading-relaxed">
-          Browse the blind systems we currently supply and install. This page now presents our active product range rather than completed project case studies.
-        </p>
+    <div className="min-h-screen bg-petal dark:bg-brand text-brand dark:text-petal transition-colors duration-300">
+      <section className="relative h-[55vh] min-h-[450px] flex items-center justify-center text-center px-6 overflow-hidden">
+        {/* Hero background image */}
+        <div className="absolute inset-0">
+          <img
+            src="/Bespoke.png"
+            alt="Portfolio hero"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-brand/65 transition-colors duration-300 dark:bg-brand/85" />
+        </div>
+        <div className="relative z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-petal tracking-widest uppercase mb-6">
+            Product<br /><span className="text-petal/60 dark:text-cocoa-soft font-light">Portfolio</span>
+          </h1>
+          <div className="h-0.5 w-32 bg-petal/60 mx-auto mb-6"></div>
+          <p className="text-petal/80 dark:text-cocoa-soft max-w-3xl mx-auto text-base font-light leading-relaxed">
+            Browse the blind systems we currently supply and install. This page now presents our active product range rather than completed project case studies.
+          </p>
+        </div>
       </section>
 
       <div className="flex flex-wrap justify-center gap-x-4 gap-y-4 mb-12 px-6 mt-12 md:gap-x-8">
@@ -161,13 +179,23 @@ export default function Portfolio() {
         )}
       </section>
 
-      <Modal open={!!selectedProduct} onClose={() => setSelectedProduct(null)} center classNames={{ modal: 'max-w-5xl w-full p-0 overflow-hidden rounded-xl' }}>
+      <Modal
+        open={!!selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        center
+        classNames={{
+          root: '!fixed !inset-0 !z-50',
+          overlay: '!fixed !inset-0',
+          modalContainer: '!fixed !inset-0 !flex !items-center !justify-center !p-4 md:!p-6',
+          modal: 'max-h-[calc(100vh-2rem)] w-full max-w-5xl overflow-hidden rounded-xl p-0 md:max-h-[calc(100vh-3rem)]',
+        }}
+      >
         {selectedProduct && (
-          <div className="flex max-h-[90vh] flex-col bg-petal transition-colors duration-300 dark:bg-brand-muted md:flex-row">
-            <div className="h-72 w-full md:h-auto md:w-[45%]">
+          <div className="flex h-full max-h-[calc(100vh-2rem)] flex-col overflow-hidden bg-petal transition-colors duration-300 dark:bg-brand-muted md:max-h-[calc(100vh-3rem)] md:flex-row">
+            <div className="h-72 w-full shrink-0 md:h-auto md:w-[45%]">
               <img src={selectedProduct.image} alt={selectedProduct.title} className="h-full w-full object-cover" />
             </div>
-            <div className="w-full overflow-y-auto p-8 md:w-[55%] md:p-10">
+            <div ref={modalContentRef} className="min-h-0 w-full overflow-y-auto p-8 md:w-[55%] md:p-10">
               <span className="mb-3 block text-[11px] font-bold uppercase tracking-[0.24em] text-brand/50 dark:text-cocoa">
                 {selectedProduct.category}
               </span>
