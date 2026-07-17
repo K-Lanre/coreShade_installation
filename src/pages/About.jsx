@@ -188,7 +188,7 @@ export default function About() {
       </section>
 
       {/* Journey Timeline */}
-      <section className="py-24 px-6 bg-[#f2d6df] dark:bg-[#371d16] transition-colors duration-300 overflow-hidden">
+      {/* <section className="py-24 px-6 bg-[#f2d6df] dark:bg-[#371d16] transition-colors duration-300 overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-center text-xs font-bold tracking-widest text-brand dark:text-cocoa-soft uppercase mb-2">
             History
@@ -240,10 +240,10 @@ export default function About() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Team */}
-      <section className="py-24 px-6 bg-[#f6dce4] dark:bg-[#4a271d] transition-colors duration-300">
+      <section className="py-24 px-6 bg-[#f2d6df] dark:bg-[#371d16] transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-center text-xs font-bold tracking-widest text-brand dark:text-cocoa-soft uppercase mb-2">
             People

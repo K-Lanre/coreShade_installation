@@ -89,7 +89,7 @@ export default function Home() {
     <div className="bg-petal dark:bg-brand text-brand dark:text-petal transition-colors duration-300 overflow-hidden">
       <section className="relative min-h-screen pt-32 lg:pt-36 flex items-center bg-petal/60 dark:bg-brand-muted transition-colors duration-300 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(239,206,219,0.5),transparent_38%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(79,40,31,0.3),transparent_38%)] pointer-events-none" />
-        <div className="container mx-auto px-6 md:px-12 lg:px-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 md:px-12 lg:grid-cols-12 lg:px-16">
           <div className="lg:col-span-5 flex flex-col items-start z-10 min-w-0">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}

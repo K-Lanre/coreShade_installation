@@ -4,7 +4,6 @@ import { useForm as useRHForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Phone, Mail, Clock, MapPin } from "lucide-react";
-import { Modal } from "react-responsive-modal";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -12,7 +11,6 @@ const formSchema = z.object({
   phone: z.string().min(10, "Phone number is required"),
   service: z.string().min(1, "Please select a service"),
   message: z.string().min(10, "Please provide more details"),
-  file: z.any().optional(),
 });
 
 const contactDetails = [
@@ -42,8 +40,18 @@ const contactDetails = [
   },
 ];
 
+function buildPrefilledMessage(product, category, delivery) {
+  if (!product) {
+    return "";
+  }
+
+  return `I am interested in ${product}${category ? ` (${category})` : ""}.${delivery ? ` ${delivery}.` : ""} Please share pricing, available options, and next steps for ordering.`;
+}
+
 export default function Contact() {
   const [showSuccess, setShowSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [searchParams] = useSearchParams();
   const selectedProduct = searchParams.get("product") || "";
   const selectedCategory = searchParams.get("category") || "";
@@ -57,21 +65,88 @@ export default function Contact() {
     setValue,
   } = useRHForm({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+    },
   });
 
   useEffect(() => {
-    if (!selectedProduct) {
-      return;
-    }
+    const message = buildPrefilledMessage(
+      selectedProduct,
+      selectedCategory,
+      selectedDelivery
+    );
 
-    const message = `I am interested in ${selectedProduct}${selectedCategory ? ` (${selectedCategory})` : ""}.${selectedDelivery ? ` ${selectedDelivery}.` : ""} Please share pricing, available options, and next steps for ordering.`;
-    setValue("message", message, { shouldValidate: true });
+    if (message) {
+      setValue("message", message, { shouldValidate: true });
+    }
   }, [selectedCategory, selectedDelivery, selectedProduct, setValue]);
 
-  const onSubmit = (data) => {
-    console.log("Form Data:", data);
-    setShowSuccess(true);
-    reset();
+  useEffect(() => {
+    if (!showSuccess) {
+      return undefined;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setShowSuccess(false);
+    }, 4000);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [showSuccess]);
+
+  const onSubmit = async (data) => {
+    setSubmitError("");
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(
+        import.meta.env.VITE_CONTACT_ENDPOINT || "/api/send-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            service: data.service,
+            message: data.message,
+          }),
+        }
+      );
+
+      const payload = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(payload.message || "We could not send your inquiry right now.");
+      }
+
+      setShowSuccess(true);
+      reset({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: buildPrefilledMessage(
+          selectedProduct,
+          selectedCategory,
+          selectedDelivery
+        ),
+      });
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong while sending the inquiry."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass = (hasError) =>
@@ -256,23 +331,19 @@ export default function Contact() {
               )}
             </div>
 
-            <div>
-              <label className="mb-2 block text-[10px] font-bold uppercase tracking-[0.24em] text-brand/45 dark:text-cocoa-soft">
-                Attach plans or sketches
-              </label>
-              <input
-                type="file"
-                {...register("file")}
-                className="w-full text-xs text-brand/60 dark:text-cocoa-soft file:mr-4 file:rounded-full file:border-0 file:bg-brand file:px-4 file:py-2 file:text-[10px] file:font-bold file:uppercase file:tracking-[0.2em] file:text-petal hover:file:bg-brand-light dark:file:bg-petal dark:file:text-brand"
-              />
-            </div>
-
             <button
               type="submit"
-              className="inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-[11px] font-bold uppercase tracking-[0.22em] text-petal transition-colors hover:bg-brand-light dark:bg-petal dark:text-brand dark:hover:bg-cocoa-soft"
+              disabled={isSubmitting}
+              aria-busy={isSubmitting}
+              className="inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-[11px] font-bold uppercase tracking-[0.22em] text-petal transition-colors hover:bg-brand-light disabled:cursor-not-allowed disabled:opacity-70 dark:bg-petal dark:text-brand dark:hover:bg-cocoa-soft"
             >
-              Submit Inquiry
+              {isSubmitting ? "Sending..." : "Submit Inquiry"}
             </button>
+            {submitError && (
+              <p className="text-sm text-red-500" role="alert">
+                {submitError}
+              </p>
+            )}
           </form>
         </div>
 
@@ -305,30 +376,29 @@ export default function Contact() {
         </div>
       </section>
 
-      <Modal
-        open={showSuccess}
-        onClose={() => setShowSuccess(false)}
-        center
-        classNames={{
-          modal:
-            "max-w-md w-full rounded-[1.8rem] border border-brand/10 bg-white p-10 text-center shadow-xl dark:border-petal/10 dark:bg-brand-muted",
-        }}
-      >
-        <h2 className="text-4xl font-serif text-brand dark:text-petal">
-          Request Sent
-        </h2>
-        <div className="mx-auto mb-6 mt-4 h-0.5 w-16 bg-brand dark:bg-petal"></div>
-        <p className="text-sm font-light leading-relaxed text-brand/65 dark:text-cocoa-soft">
-          Your project details have been received. Our team will review the
-          request and respond within 24 hours.
-        </p>
-        <button
-          onClick={() => setShowSuccess(false)}
-          className="mt-8 inline-flex items-center justify-center rounded-full border border-brand px-7 py-3 text-[11px] font-bold uppercase tracking-[0.22em] text-brand transition-colors hover:bg-brand hover:text-petal dark:border-petal dark:text-petal dark:hover:bg-petal dark:hover:text-brand"
-        >
-          Dismiss
-        </button>
-      </Modal>
+      {showSuccess && (
+        <div className="fixed bottom-6 left-1/2 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-[1.4rem] border border-brand/10 bg-white px-5 py-4 shadow-[0_18px_45px_rgba(79,40,31,0.16)] transition-colors duration-300 dark:border-petal/10 dark:bg-brand-muted">
+          <div className="flex items-start gap-3">
+            <div className="mt-0.5 h-2.5 w-2.5 rounded-full bg-emerald-500" />
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold text-brand dark:text-petal">
+                Request sent
+              </p>
+              <p className="mt-1 text-xs leading-relaxed text-brand/65 dark:text-cocoa-soft">
+                Your inquiry was received. Weâ€™ll review it and respond within 24 hours.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowSuccess(false)}
+              className="rounded-full px-2 py-1 text-xs text-brand/50 hover:text-brand dark:text-cocoa-soft dark:hover:text-petal"
+              aria-label="Dismiss success message"
+            >
+              Ã—
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

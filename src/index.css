@@ -3,8 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scrollbar-gutter: stable;
+  }
+
   body {
     @apply bg-petal dark:bg-brand text-brand dark:text-petal transition-colors duration-300;
+    margin: 0;
+    min-width: 100%;
+    overflow-x: clip;
+  }
+
+  #root {
+    min-height: 100vh;
+    overflow-x: clip;
   }
 }
 
