@@ -23,14 +23,19 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-brand/10 bg-[#e5bdca] pt-16 pb-8 transition-colors duration-300 dark:border-petal/10 dark:bg-brand-muted">
-      <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 mb-12 md:grid-cols-3 md:px-12 lg:px-16">
         <div className="flex flex-col space-y-4">
           <div className="flex items-center gap-4">
             <Link to="/" className="flex items-center gap-3 min-w-0">
               <img
                 src="/logo.png"
                 alt="Coreshade Installation logo"
-                className="h-10 w-auto max-w-[140px] sm:h-11 sm:max-w-[170px] md:h-12 md:max-w-[210px] lg:max-w-[240px] object-contain shrink-0"
+                className="h-10 w-auto max-w-[140px] sm:h-11 sm:max-w-[170px] md:h-12 md:max-w-[210px] lg:max-w-[240px] object-contain shrink-0 dark:hidden"
+              />
+              <img
+                src="/logodark.png"
+                alt="Coreshade Installation logo"
+                className="hidden h-10 w-auto max-w-[140px] sm:h-11 sm:max-w-[170px] md:h-12 md:max-w-[210px] lg:max-w-[240px] object-contain shrink-0 dark:block"
               />
             </Link>
           </div>
@@ -71,10 +76,9 @@ export default function Footer() {
                 <NavLink
                   to={link.path}
                   className={({ isActive }) =>
-                    `relative inline-flex pb-1 text-sm transition-colors duration-300 ${
-                      isActive
-                        ? "text-brand dark:text-petal"
-                        : "text-brand/70 hover:text-brand dark:text-cocoa-soft dark:hover:text-cocoa-soft"
+                    `relative inline-flex pb-1 text-sm transition-colors duration-300 ${isActive
+                      ? "text-brand dark:text-petal"
+                      : "text-brand/70 hover:text-brand dark:text-cocoa-soft dark:hover:text-cocoa-soft"
                     }`
                   }
                 >
@@ -112,7 +116,9 @@ export default function Footer() {
                 className="mt-1 flex-shrink-0 text-brand/70 dark:text-cocoa-soft"
               />
               <span className="text-sm text-brand/70 dark:text-cocoa-soft">
-                86-90 Paul Street, London EC2A 4NE
+                Northstar avenue
+                <br />
+                Swindon SN2 1FQ
                 <br />
                 United Kingdom
               </span>
@@ -123,7 +129,7 @@ export default function Footer() {
                 className="flex-shrink-0 text-brand/70 dark:text-cocoa-soft"
               />
               <span className="text-sm text-brand/70 dark:text-cocoa-soft">
-                +234 803 268 7681
+                +447462189184
               </span>
             </li>
             <li className="flex items-center space-x-3">
@@ -139,7 +145,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 border-t border-brand/10 pt-8 flex flex-col md:flex-row justify-between items-center dark:border-petal/10">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between border-t border-brand/10 px-6 pt-8 md:flex-row md:px-12 lg:px-16 dark:border-petal/10">
         <p className="text-center md:text-left text-xs text-brand/55 dark:text-cocoa">
           Copyright {currentYear} Coreshade Installation. All rights reserved.
         </p>

@@ -11,6 +11,8 @@ import {
   LayoutGrid,
   SunDim,
   Sparkles,
+  Check,
+  ArrowRight,
 } from "lucide-react";
 
 export default function Services() {
@@ -25,7 +27,7 @@ export default function Services() {
         "Anti-glare screen selections",
       ],
       icon: LayoutGrid,
-      image: "/commercial.png",
+      image: "/commercial.jpg",
     },
     {
       title: "Professional Blind Installation",
@@ -135,11 +137,10 @@ export default function Services() {
             return (
               <div
                 key={index}
-                className={`group relative min-h-[320px] md:min-h-[360px] ${
-                  isImageCard
+                className={`group relative min-h-[320px] md:min-h-[360px] ${isImageCard
                     ? "overflow-hidden bg-[#ead8cf] dark:bg-brand-muted"
                     : "bg-[#f6eee8] dark:bg-brand-muted text-brand dark:text-petal"
-                }`}
+                  }`}
               >
                 {isImageCard ? (
                   <>
@@ -148,7 +149,8 @@ export default function Services() {
                       alt={service.title}
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#3a2018]/70 via-[#4f281f]/25 to-transparent dark:from-brand-muted/75 dark:via-brand/20 dark:to-transparent" />
+                    <div className="absolute inset-0 bg-[#1c0c08]/15 dark:bg-black/35 transition-colors duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1c0c08]/90 via-[#1c0c08]/55 to-transparent dark:from-[#0a0504]/95 dark:via-[#0a0504]/60 dark:to-transparent" />
                     <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
                       <span className="mb-3 inline-flex items-center gap-2 text-[10px] font-bold tracking-[0.28em] uppercase text-[#f3ddd2] dark:text-cocoa-soft">
                         About
@@ -184,9 +186,7 @@ export default function Services() {
                             key={i}
                             className="flex items-start text-brand/75 dark:text-cocoa-soft"
                           >
-                            <span className="mr-3 mt-0.5 text-[10px] text-brand dark:text-petal">
-                              Ã¢â€”â€ 
-                            </span>
+                            <Check size={16} className="mr-3 mt-0.5 text-brand dark:text-petal shrink-0" />
                             <span className="text-sm leading-relaxed">
                               {feature}
                             </span>
@@ -198,7 +198,7 @@ export default function Services() {
                         className="mt-8 inline-flex items-center gap-2 text-xs font-bold tracking-[0.22em] uppercase text-brand dark:text-cocoa-soft hover:text-brand-light dark:hover:text-petal transition-colors"
                       >
                         <span>Read More</span>
-                        <span aria-hidden="true">Ã¢â€ â€™</span>
+                        <ArrowRight size={14} className="transition-transform group-hover:translate-x-1 shrink-0" />
                       </Link>
                     </div>
                   </div>

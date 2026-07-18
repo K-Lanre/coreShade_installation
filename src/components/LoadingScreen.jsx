@@ -20,7 +20,12 @@ export default function LoadingScreen() {
           <img
             src="/logo.png"
             alt="Coreshade Installation logo"
-            className="h-16 w-auto object-contain sm:h-20"
+            className="h-16 w-auto object-contain dark:hidden sm:h-20"
+          />
+          <img
+            src="/logodark.png"
+            alt="Coreshade Installation logo"
+            className="hidden h-16 w-auto object-contain dark:block sm:h-20"
           />
         </motion.div>
 

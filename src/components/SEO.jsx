@@ -67,7 +67,7 @@ export default function SEO() {
 
     const origin = window.location.origin;
     const canonicalUrl = `${origin}${location.pathname}`;
-    const imageUrl = `${origin}/logo.png`;
+    const imageUrl = `${origin}/logodark.png`;
 
     document.title = meta.title;
 

@@ -104,16 +104,15 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-petal/95 dark:bg-brand/95 backdrop-blur-md shadow-lg shadow-brand/10 dark:shadow-brand-muted/50 py-4 border-b border-brand/15 dark:border-petal/10"
-          : "bg-transparent py-6"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
+        ? "bg-petal/95 dark:bg-brand/95 backdrop-blur-md shadow-lg shadow-brand/10 dark:shadow-brand-muted/50 py-4 border-b border-brand/15 dark:border-petal/10"
+        : "bg-transparent py-6"
+        }`}
     >
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between gap-6">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-6 md:px-12 lg:px-16">
         <Link to="/" className="flex items-center gap-3">
           <img
-            src="/logo.png"
+            src={theme === "dark" || useHeroNavColors ? "/logodark.png" : "/logo.png"}
             alt="Coreshade Installation logo"
             className="h-10 w-auto max-w-[140px] sm:h-11 sm:max-w-[170px] md:h-12 md:max-w-[210px] lg:max-w-[240px] object-contain shrink-0"
           />
@@ -126,8 +125,7 @@ export default function Navbar() {
               to={link.path}
               end={link.end}
               className={({ isActive }) =>
-                `relative inline-flex pb-2 text-xs font-semibold tracking-widest uppercase transition-colors duration-300 ${desktopHoverClass} ${
-                  isActive ? desktopActiveLinkClass : desktopIdleLinkClass
+                `relative inline-flex pb-2 text-xs font-semibold tracking-widest uppercase transition-colors duration-300 ${desktopHoverClass} ${isActive ? desktopActiveLinkClass : desktopIdleLinkClass
                 }`
               }
             >
@@ -194,10 +192,9 @@ export default function Navbar() {
                   to={link.path}
                   end={link.end}
                   className={({ isActive }) =>
-                    `relative inline-flex w-fit pb-1 text-base font-semibold tracking-wide uppercase transition-colors ${
-                      isActive
-                        ? "text-brand dark:text-petal"
-                        : "text-brand/60 dark:text-cocoa-soft hover:text-brand dark:hover:text-cocoa-soft"
+                    `relative inline-flex w-fit pb-1 text-base font-semibold tracking-wide uppercase transition-colors ${isActive
+                      ? "text-brand dark:text-petal"
+                      : "text-brand/60 dark:text-cocoa-soft hover:text-brand dark:hover:text-cocoa-soft"
                     }`
                   }
                 >

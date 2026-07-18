@@ -11,7 +11,6 @@ const buildInquiryLink = (item) => {
   const params = new URLSearchParams({
     product: item.title,
     category: item.category,
-    delivery: item.deliveryEstimate,
   });
 
   return `/contact?${params.toString()}`;
@@ -74,11 +73,10 @@ export default function Portfolio() {
               setVisibleCount(6);
               setSelectedProduct(null);
             }}
-            className={`cursor-pointer border-b-2 pb-2 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
-              filter === cat
+            className={`cursor-pointer border-b-2 pb-2 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${filter === cat
                 ? 'border-brand text-brand dark:border-petal dark:text-petal'
                 : 'border-transparent text-brand/40 hover:text-brand dark:text-cocoa dark:hover:text-petal'
-            }`}
+              }`}
           >
             {cat}
           </button>
@@ -137,13 +135,6 @@ export default function Portfolio() {
                         {product.overview}
                       </p>
 
-                      <div className="mt-5 rounded-lg border border-brand/12 bg-petal/45 p-4 dark:border-petal/12 dark:bg-[#43231b]">
-                        <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.22em] text-brand/45 dark:text-cocoa">
-                          Estimated Delivery
-                        </span>
-                        <p className="text-sm font-medium text-brand dark:text-petal">{product.deliveryEstimate}</p>
-                      </div>
-
                       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                         <button
                           type="button"
@@ -201,13 +192,6 @@ export default function Portfolio() {
               </span>
               <h2 className="mb-4 text-3xl font-serif text-brand dark:text-cocoa-soft">{selectedProduct.title}</h2>
               <p className="mb-6 text-sm leading-relaxed text-brand/65 dark:text-cocoa-soft">{selectedProduct.overview}</p>
-
-              <div className="mb-8 rounded-lg border border-brand/12 bg-petal/50 p-4 dark:border-petal/12 dark:bg-[#43231b]">
-                <span className="mb-2 block text-[10px] font-bold uppercase tracking-[0.22em] text-brand/45 dark:text-cocoa">
-                  Estimated Delivery
-                </span>
-                <p className="text-sm font-medium text-brand dark:text-petal">{selectedProduct.deliveryEstimate}</p>
-              </div>
 
               <div className="mb-8">
                 <h3 className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-brand dark:text-petal">Commonly Used At</h3>

@@ -78,7 +78,7 @@ export default function Process() {
         </div>
       </section>
 
-      <section className="relative mx-auto max-w-5xl px-6 py-24 md:py-32 md:px-10">
+      <section className="relative mx-auto max-w-7xl px-6 py-24 md:py-32 md:px-12 lg:px-16">
         <div className="flex flex-col gap-7 md:gap-10">
           {steps.map((step, index) => {
             const isEven = index % 2 === 0;

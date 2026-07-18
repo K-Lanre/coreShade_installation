@@ -4,10 +4,8 @@ import { CheckCircle, Eye } from "lucide-react";
 
 export default function About() {
   const stats = [
-    { value: "150+", label: "Commercial Contracts" },
     { value: "12,000+", label: "Shades Installed" },
     { value: "100%", label: "Compliance & Safety" },
-    { value: "5 Year", label: "Commercial Warranty" },
   ];
 
   const values = [
@@ -120,10 +118,10 @@ export default function About() {
 
       {/* Stats */}
       <section className="py-16 bg-[#f8e7ed] dark:bg-[#43231b] border-y border-brand/15 dark:border-petal/15 transition-colors duration-300">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="mx-auto max-w-3xl px-6 md:px-12 lg:px-16">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-12 sm:gap-24 text-center">
             {stats.map((stat, i) => (
-              <div key={i}>
+              <div key={i} className="flex-1">
                 <div className="text-3xl md:text-5xl font-serif text-brand dark:text-petal font-bold mb-2">
                   {stat.value}
                 </div>
@@ -243,6 +241,7 @@ export default function About() {
       </section> */}
 
       {/* Team */}
+      {/*
       <section className="py-24 px-6 bg-[#f2d6df] dark:bg-[#371d16] transition-colors duration-300">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-center text-xs font-bold tracking-widest text-brand dark:text-cocoa-soft uppercase mb-2">
@@ -275,6 +274,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      */}
     </div>
   );
 }

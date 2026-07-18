@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+﻿import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useForm as useRHForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -17,7 +17,7 @@ const contactDetails = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+234 (0) 803 268 7681",
+    value: "+447462189184",
     note: "Call or WhatsApp us directly",
   },
   {
@@ -29,7 +29,7 @@ const contactDetails = [
   {
     icon: MapPin,
     title: "Location",
-    value: "London, United Kingdom",
+    value: "Northstar avenue, Swindon SN2 1FQ",
     note: "Site meetings by appointment",
   },
   {
@@ -40,12 +40,12 @@ const contactDetails = [
   },
 ];
 
-function buildPrefilledMessage(product, category, delivery) {
+function buildPrefilledMessage(product, category) {
   if (!product) {
     return "";
   }
 
-  return `I am interested in ${product}${category ? ` (${category})` : ""}.${delivery ? ` ${delivery}.` : ""} Please share pricing, available options, and next steps for ordering.`;
+  return `I am interested in ${product}${category ? ` (${category})` : ""}. Please share pricing, available options, and next steps for ordering.`;
 }
 
 export default function Contact() {
@@ -55,7 +55,6 @@ export default function Contact() {
   const [searchParams] = useSearchParams();
   const selectedProduct = searchParams.get("product") || "";
   const selectedCategory = searchParams.get("category") || "";
-  const selectedDelivery = searchParams.get("delivery") || "";
 
   const {
     register,
@@ -77,14 +76,13 @@ export default function Contact() {
   useEffect(() => {
     const message = buildPrefilledMessage(
       selectedProduct,
-      selectedCategory,
-      selectedDelivery
+      selectedCategory
     );
 
     if (message) {
       setValue("message", message, { shouldValidate: true });
     }
-  }, [selectedCategory, selectedDelivery, selectedProduct, setValue]);
+  }, [selectedCategory, selectedProduct, setValue]);
 
   useEffect(() => {
     if (!showSuccess) {
@@ -134,8 +132,7 @@ export default function Contact() {
         service: "",
         message: buildPrefilledMessage(
           selectedProduct,
-          selectedCategory,
-          selectedDelivery
+          selectedCategory
         ),
       });
     } catch (error) {
@@ -150,10 +147,9 @@ export default function Contact() {
   };
 
   const inputClass = (hasError) =>
-    `w-full rounded-2xl border bg-transparent px-4 py-3 text-sm outline-none transition-colors duration-300 ${
-      hasError
-        ? "border-red-500 text-red-500 placeholder:text-red-300"
-        : "border-brand/15 text-brand placeholder:text-brand/35 focus:border-brand dark:border-petal/15 dark:text-petal dark:placeholder:text-cocoa/60 dark:focus:border-petal"
+    `w-full rounded-2xl border bg-transparent px-4 py-3 text-sm outline-none transition-colors duration-300 ${hasError
+      ? "border-red-500 text-red-500 placeholder:text-red-300"
+      : "border-brand/15 text-brand placeholder:text-brand/35 focus:border-brand dark:border-petal/15 dark:text-petal dark:placeholder:text-cocoa/60 dark:focus:border-petal"
     }`;
 
   return (
@@ -231,11 +227,6 @@ export default function Contact() {
               {selectedCategory && (
                 <p className="mt-2 text-xs uppercase tracking-[0.2em] text-brand/55 dark:text-cocoa-soft">
                   Category: {selectedCategory}
-                </p>
-              )}
-              {selectedDelivery && (
-                <p className="mt-2 text-sm text-brand/75 dark:text-petal">
-                  {selectedDelivery}
                 </p>
               )}
             </div>
@@ -369,7 +360,7 @@ export default function Contact() {
                 scrolling="no"
                 marginHeight="0"
                 marginWidth="0"
-                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=86-90%20Paul%20Street,%20London%20EC2A%204NE,%20United%20Kingdom+(Coreshade%20Installation)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Northstar%20avenue,%20Swindon%20SN2%201FQ,%20United%20Kingdom+(Coreshade%20Installation)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
               ></iframe>
             </div>
           </div>
@@ -385,7 +376,7 @@ export default function Contact() {
                 Request sent
               </p>
               <p className="mt-1 text-xs leading-relaxed text-brand/65 dark:text-cocoa-soft">
-                Your inquiry was received. Weâ€™ll review it and respond within 24 hours.
+                Your inquiry was received. We'll review it and respond within 24 hours.
               </p>
             </div>
             <button
@@ -394,7 +385,7 @@ export default function Contact() {
               className="rounded-full px-2 py-1 text-xs text-brand/50 hover:text-brand dark:text-cocoa-soft dark:hover:text-petal"
               aria-label="Dismiss success message"
             >
-              Ã—
+              ×—
             </button>
           </div>
         </div>
