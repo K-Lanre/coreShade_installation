@@ -44,7 +44,7 @@ export default function Footer() {
             spaces through expert design, specialist blind supply, professional
             installation, and complete fit-out solutions.
           </p>
-          <div className="flex space-x-4 pt-4">
+          {/* <div className="flex space-x-4 pt-4">
             <a
               href="#"
               className="text-brand/55 transition-colors hover:text-brand dark:text-cocoa dark:hover:text-cocoa-soft"
@@ -63,7 +63,7 @@ export default function Footer() {
             >
               <Linkedin size={20} />
             </a>
-          </div>
+          </div> */}
         </div>
 
         <div className="flex flex-col">
@@ -138,7 +138,7 @@ export default function Footer() {
                 className="flex-shrink-0 text-brand/70 dark:text-cocoa-soft"
               />
               <span className="text-sm text-brand/70 dark:text-cocoa-soft">
-                inquiries@coreshade.com
+                info@coreshade.co.uk
               </span>
             </li>
           </ul>

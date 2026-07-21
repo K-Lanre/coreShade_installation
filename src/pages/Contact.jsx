@@ -23,8 +23,8 @@ const contactDetails = [
   {
     icon: Mail,
     title: "Email",
-    value: "inquiries@coreshade.com",
-    note: "Send project details and drawings",
+    value: "info@coreshade.co.uk",
+    note: "Mail us for enquiries on project details",
   },
   {
     icon: MapPin,
@@ -52,7 +52,7 @@ export default function Contact() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const selectedProduct = searchParams.get("product") || "";
   const selectedCategory = searchParams.get("category") || "";
 
@@ -91,7 +91,7 @@ export default function Contact() {
 
     const timeoutId = window.setTimeout(() => {
       setShowSuccess(false);
-    }, 4000);
+    }, 8000);
 
     return () => window.clearTimeout(timeoutId);
   }, [showSuccess]);
@@ -125,16 +125,8 @@ export default function Contact() {
       }
 
       setShowSuccess(true);
-      reset({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        message: buildPrefilledMessage(
-          selectedProduct,
-          selectedCategory
-        ),
-      });
+      reset();
+      setSearchParams({}, { replace: true });
     } catch (error) {
       setSubmitError(
         error instanceof Error
@@ -368,7 +360,7 @@ export default function Contact() {
       </section>
 
       {showSuccess && (
-        <div className="fixed bottom-6 left-1/2 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-[1.4rem] border border-brand/10 bg-white px-5 py-4 shadow-[0_18px_45px_rgba(79,40,31,0.16)] transition-colors duration-300 dark:border-petal/10 dark:bg-brand-muted">
+        <div className="fixed left-1/2 top-6 z-50 w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-[1.4rem] border border-brand/10 bg-white px-5 py-4 shadow-[0_18px_45px_rgba(79,40,31,0.16)] transition-colors duration-300 dark:border-petal/10 dark:bg-brand-muted">
           <div className="flex items-start gap-3">
             <div className="mt-0.5 h-2.5 w-2.5 rounded-full bg-emerald-500" />
             <div className="min-w-0 flex-1">
@@ -385,7 +377,7 @@ export default function Contact() {
               className="rounded-full px-2 py-1 text-xs text-brand/50 hover:text-brand dark:text-cocoa-soft dark:hover:text-petal"
               aria-label="Dismiss success message"
             >
-              ×—
+              ×
             </button>
           </div>
         </div>

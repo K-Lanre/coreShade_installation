@@ -41,8 +41,8 @@ test("send-email handler builds the expected Resend request", async () => {
   const originalFetch = global.fetch;
 
   process.env.RESEND_API_KEY = "re_test_key";
-  process.env.RESEND_FROM_EMAIL = "hello@coreshade.com";
-  process.env.RESEND_TO_EMAIL = "inquiries@coreshade.com";
+  process.env.RESEND_FROM_EMAIL = "info@coreshade.co.uk";
+  process.env.RESEND_TO_EMAIL = "info@coreshade.co.uk";
 
   let capturedRequest = null;
   global.fetch = async (url, options) => {
@@ -82,8 +82,8 @@ test("send-email handler builds the expected Resend request", async () => {
     );
 
     const payload = JSON.parse(capturedRequest.options.body);
-    assert.equal(payload.from, "hello@coreshade.com");
-    assert.deepEqual(payload.to, ["inquiries@coreshade.com"]);
+    assert.equal(payload.from, "info@coreshade.co.uk");
+    assert.deepEqual(payload.to, ["info@coreshade.co.uk"]);
     assert.equal(payload.reply_to, "ada@example.com");
     assert.equal(
       payload.subject,
@@ -92,12 +92,12 @@ test("send-email handler builds the expected Resend request", async () => {
     assert.equal(
       payload.text,
       "Name: Ada Lovelace\n" +
-        "Email: ada@example.com\n" +
-        "Phone: +2348032687681\n" +
-        "Project type: Commercial Office\n" +
-        "\n" +
-        "Message:\n" +
-        "Please send a quote for our project."
+      "Email: ada@example.com\n" +
+      "Phone: +2348032687681\n" +
+      "Project type: Commercial Office\n" +
+      "\n" +
+      "Message:\n" +
+      "Please send a quote for our project."
     );
     assert.match(payload.html, /<h2>New contact inquiry<\/h2>/);
     assert.match(payload.html, /<strong>Name:<\/strong> Ada Lovelace/);
@@ -129,8 +129,8 @@ test("send-email handler rejects missing required fields", async () => {
   const originalFetch = global.fetch;
 
   process.env.RESEND_API_KEY = "re_test_key";
-  process.env.RESEND_FROM_EMAIL = "hello@coreshade.com";
-  process.env.RESEND_TO_EMAIL = "inquiries@coreshade.com";
+  process.env.RESEND_FROM_EMAIL = "info@coreshade.co.uk";
+  process.env.RESEND_TO_EMAIL = "info@coreshade.co.uk";
 
   let fetchCalled = false;
   global.fetch = async () => {
