@@ -11,6 +11,7 @@ import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Process from './pages/Process';
 import Contact from './pages/Contact';
+import NotFound from './pages/NotFound';
 
 function AppShell() {
   return (
@@ -25,6 +26,7 @@ function AppShell() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/process" element={<Process />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />

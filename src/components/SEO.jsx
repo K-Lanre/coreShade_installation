@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const siteName = 'Coreshade Installation';
+const siteUrl = (import.meta.env.VITE_SITE_URL || 'https://coreshade.co.uk').replace(/\/$/, '');
 const defaultDescription = 'Commercial interior fit-out, blind supply, and installation services for offices, residential developments, and project teams across the UK.';
 
 const routeMeta = {
@@ -60,14 +61,16 @@ export default function SEO() {
   const location = useLocation();
 
   useEffect(() => {
-    const meta = routeMeta[location.pathname] || {
-      title: siteName,
-      description: defaultDescription,
-    };
+    const isKnownRoute = Object.hasOwn(routeMeta, location.pathname);
+    const meta = isKnownRoute
+      ? routeMeta[location.pathname]
+      : {
+          title: `Page Not Found | ${siteName}`,
+          description: defaultDescription,
+        };
 
-    const origin = window.location.origin;
-    const canonicalUrl = `${origin}${location.pathname}`;
-    const imageUrl = `${origin}/logodark.png`;
+    const canonicalUrl = `${siteUrl}${location.pathname}`;
+    const imageUrl = `${siteUrl}/logodark.png`;
 
     document.title = meta.title;
 
@@ -78,7 +81,7 @@ export default function SEO() {
 
     upsertMeta('meta[name="robots"]', {
       name: 'robots',
-      content: 'index, follow',
+      content: isKnownRoute ? 'index, follow' : 'noindex, follow',
     });
 
     upsertMeta('meta[property="og:type"]', {
